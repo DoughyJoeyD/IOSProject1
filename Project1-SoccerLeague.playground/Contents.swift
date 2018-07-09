@@ -3,7 +3,7 @@
 import UIKit
 
 import Foundation
-
+// This stores each player with a dictonary of info about them
 let player1 = ["Name": "Joe Smith", "Height" : "42", "Soccer Exp" : "Yes", "Guardian Name(s)": "Jim and Jan Smith"]
 let player2 = ["Name": "Jill Tanner", "Height" : "36", "Soccer Exp" : "Yes", "Guardian Name(s)": "Clara Tanner"]
 let player3 = ["Name": "Bill Bon", "Height" : "43", "Soccer Exp" : "Yes", "Guardian Name(s)": "Sara and Jenny Bon"]
@@ -26,13 +26,15 @@ let player18 = ["Name": "Herschel Krustofski", "Height" : "45", "Soccer Exp" : "
 let players = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14, player15, player16, player17, player18]
 
 
-
+// To init the teams
 var teamSharks = [[String:String]] ()
 var teamRaptors = [[String:String]] ()
 var teamDragons = [[String:String]] ()
+// function creates the teams and sorts the players by there experience
 
 func createTeams(){
     for item in players {
+        // sorts the players and appends them based on the item count of the 3 teams
         if item["Soccer Exp"] == "Yes"{
             if teamSharks.count == teamDragons.count {
                 var tempItem = item
@@ -56,6 +58,7 @@ func createTeams(){
             }
         }
     }
+    // sorts the unexperienced players the same way as above
     for item in players {
         if item["Soccer Exp"] == "No"{
             if teamSharks.count == teamDragons.count {
@@ -82,46 +85,42 @@ func createTeams(){
     }
 }
 
-
+// Drafts the messages for each player given an array of players (teamRaptors, teamDragons, teamSharks)
 func createMessage(players:[[String:String]]) {
     let dragonsPractice = "March 17, at 1pm"
     let sharksPractice = "March 17, at 3pm"
     let raptorsPractice = "March 18, at 1pm"
     var letters = [""]
     for player in players {
-        
+        // If the player is on a team draft them a message with the right practice time
         if player["team"] == "Raptors" {
-            if player != nil {
-                
                 let playerMessage = " Dear \(player["Guardian Name(s)"]!), \n  Your child, \(player["Name"]!) is on the Raptors. They will practice on \(raptorsPractice)"
-                
-                letters.append(playerMessage)}}
+            
+                letters.append(playerMessage)}
         
         if player["team"] == "Dragons"{
-            if player != nil {
-                
                 let playerMessage = " Dear \(player["Guardian Name(s)"]!), \n Your child, \(player["Name"]!) is on the Dragons. They will practice on \(dragonsPractice)"
                 
                 letters.append(playerMessage)
-            }}
+            }
         
         if player["team"] == "Sharks"{
-            if player != nil {
-                
                 let playerMessage = " Dear \(player["Guardian Name(s)"]!), \n Your child, \(player["Name"]!) is on the Sharks. They will practice on \(sharksPractice)"
                 
-                letters.append(playerMessage)
-            }}
+                letters.append(playerMessage)}
         
         
     }
+    //Prints nicely to the console
     for item in letters{
         print(item)
         print("\n")
     }
 }
-
+//Calls the team function
 createTeams()
+
+//Calls the createMessage Function given each teams array of players
 createMessage(players: teamSharks)
 createMessage(players: teamRaptors)
 createMessage(players: teamDragons)
