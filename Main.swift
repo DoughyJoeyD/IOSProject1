@@ -30,9 +30,7 @@ let player18 = ["Name": "Herschel Krustofski", "Height" : "45", "Soccer Exp" : "
 let players = [player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11, player12, player13, player14, player15, player16, player17, player18]
 
 
-//for item in players {
-  //  print("\(item["Name"]!) is \(item["Height"]!) inches tall!")
-//}
+
 var sharks = [[String:String]] ()
 var raptors = [[String:String]] ()
 var dragons = [[String:String]] ()
